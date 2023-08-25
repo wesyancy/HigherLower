@@ -24,12 +24,17 @@ def game_start():
     score = 0
     keep_playing = True
 
+    # assign entry_a to a random data point outside of loop
+    entry_a = random.choice(data)
+
     while keep_playing != False:
 
-        # First we will need to generate 2 random numbers to pull a random entries from the data
-        # Assign the given entries to variables (A and B) that will hold the data for given entry
-        entry_a = random.choice(data)
+        # Assign entry_b to a random data point INSIDE of loop (this is important)
         entry_b = random.choice(data)
+
+        # If entries are identical then entry_b will re-roll till they are no longer the same
+        while entry_a == entry_b:
+            entry_b = random.choice(data)
 
         higher_entry = {}
         if entry_a.get('follower_count') > entry_b.get('follower_count'):
@@ -62,6 +67,9 @@ def game_start():
             clear()
             print(art.logo)
             print(f"You're right! Current score: {score}")
+
+            # Assign answer to entry_a to keep streak going
+            entry_a = answer
         else:
             clear()
             print(f"Sorry, that's wrong. Final score: {score}")
