@@ -50,12 +50,12 @@ def game_start():
         print(
             f"Against B: {entry_b.get('name')}, a {entry_b.get('description')}, from {entry_b.get('country')}")
 
-        answer = input("Who has more followers? Type 'A' or 'B': ")
+        answer = input("Who has more followers? Type 'A' or 'B': ").lower()
 
         # Assign user answer to corresponding entry
-        if answer == 'A':
+        if answer == 'a':
             answer = entry_a
-        elif answer == 'B':
+        elif answer == 'b':
             answer = entry_b
         else:
             print("You have provided an invalid answer choice")
